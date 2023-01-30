@@ -404,7 +404,7 @@ async def top(ctx: Context) -> Optional[str]:
         "AND s.mode = :mode "
         "AND s.status = 2 "
         "AND b.status in (2, 3) "
-        "ORDER BY s.pp DESC LIMIT 10",
+        "ORDER BY s.pp DESC LIMIT 50",
         {"user_id": player.id, "mode": mode},
     )
 

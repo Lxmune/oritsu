@@ -126,8 +126,7 @@ async def bancho_handler(
         # tell their client to reconnect immediately.
         return Response(
             content=(
-                app.packets.notification("Server has restarted.")
-                + app.packets.restart_server(0)  # ms until reconnection
+                app.packets.restart_server(0)  # ms until reconnection
             ),
         )
 
@@ -382,10 +381,6 @@ RESTRICTED_MSG = (
     "greater than 3 months, you may appeal via the form on the site."
 )
 
-WELCOME_NOTIFICATION = app.packets.notification(
-    f"Welcome back to {BASE_DOMAIN}!\nRunning bancho.py v{app.settings.VERSION}.",
-)
-
 OFFLINE_NOTIFICATION = app.packets.notification(
     "The server is currently running in offline mode; "
     "some features will be unavailable.",
@@ -606,7 +601,7 @@ async def login(
             return {
                 "osu_token": "incorrect-password",
                 "response_body": (
-                    app.packets.notification(f"{BASE_DOMAIN}: Incorrect password")
+                    app.packets.notification(f"oritsu!: Incorrect password")
                     + app.packets.user_id(-1)
                 ),
             }
@@ -615,7 +610,7 @@ async def login(
             return {
                 "osu_token": "incorrect-password",
                 "response_body": (
-                    app.packets.notification(f"{BASE_DOMAIN}: Incorrect password")
+                    app.packets.notification(f"oritsu!: Incorrect password")
                     + app.packets.user_id(-1)
                 ),
             }
@@ -781,8 +776,6 @@ async def login(
     data += app.packets.bancho_privileges(
         player.bancho_priv | ClientPrivileges.SUPPORTER,
     )
-
-    data += WELCOME_NOTIFICATION
 
     # send all appropriate channel info to our player.
     # the osu! client will attempt to join the channels.
