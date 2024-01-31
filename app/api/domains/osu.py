@@ -1865,6 +1865,11 @@ async def register_account(
 
     if pw_plaintext.lower() in app.settings.DISALLOWED_PASSWORDS:
         errors["password"].append("That password was deemed too simple.")
+    
+    registration_enabled = True
+    if not registration_enabled:
+        errors["username"].append("Registration is disabled at the moment.")
+
 
     if errors:
         # we have errors to send back, send them back delimited by newlines.
