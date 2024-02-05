@@ -195,8 +195,8 @@ async def bancho_handler(
         # tell their client to reconnect immediately.
         return Response(
             content=(
-                app.packets.notification("Server has restarted.")
-                + app.packets.restart_server(0)  # ms until reconnection
+                #app.packets.notification("Server has restarted.") +
+                app.packets.restart_server(0)  # ms until reconnection
             ),
         )
 
@@ -452,7 +452,7 @@ RESTRICTED_MSG = (
 )
 
 WELCOME_NOTIFICATION = app.packets.notification(
-    f"Welcome back to {BASE_DOMAIN}!\nRunning bancho.py v{app.settings.VERSION}.",
+    f"Welcome back to {BASE_DOMAIN}!\nGL & HF!",
 )
 
 OFFLINE_NOTIFICATION = app.packets.notification(
